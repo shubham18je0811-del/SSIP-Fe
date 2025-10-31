@@ -47,18 +47,22 @@ async function loadCourses() {
 
     try {
         allCourses = await response.json();
+        console.log('Courses loaded successfully:', allCourses.length, 'courses');
         if (!Array.isArray(allCourses)) {
             throw new Error('Courses data is not an array');
         }
         filteredCourses = [...allCourses];
+        console.log('Rendering courses...');
         renderCourses(allCourses);
         setupFilterButtons();
+        console.log('Courses rendered successfully');
     } catch (error) {
         console.error('Error parsing courses JSON:', error);
         courseGrid.innerHTML = 
             '<div style="text-align: center; padding: 2rem; color: var(--text-gray);">' +
             '<i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; color: var(--secondary-blue);"></i>' +
             '<p>Error parsing courses data. Please check data/courses.json file.</p>' +
+            '<p style="margin-top: 1rem; font-size: 0.9rem;">Error: ' + error.message + '</p>' +
             '</div>';
     }
 }
@@ -67,17 +71,26 @@ function renderCourses(courses) {
     const courseGrid = document.getElementById('courseGrid');
     const noResults = document.getElementById('noResults');
     
+    console.log('renderCourses called with', courses.length, 'courses');
+    
+    if (!courseGrid) {
+        console.error('Course grid element not found!');
+        return;
+    }
+    
     if (courses.length === 0) {
+        console.log('No courses to display');
         courseGrid.style.display = 'none';
-        noResults.style.display = 'block';
+        if (noResults) noResults.style.display = 'block';
         return;
     }
 
+    console.log('Setting grid display and generating HTML...');
     courseGrid.style.display = 'grid';
-    noResults.style.display = 'none';
+    if (noResults) noResults.style.display = 'none';
     
-    // Define unique poster designs for each course
-    const getCoursePoster = (course) => {
+    // Define unique poster designs for each course (fallback)
+    const getFallbackDesign = (courseId) => {
         const posterDesigns = {
             1: { // Maha Granth
                 gradient: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%)',
@@ -99,19 +112,29 @@ function renderCourses(courses) {
             }
         };
 
-        const design = posterDesigns[course.id] || {
+        return posterDesigns[courseId] || {
             gradient: 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)',
             icon: 'fas fa-book',
             iconSize: '3rem',
             pattern: 'none'
         };
+    };
 
-        // Check if custom image exists
-        if (course.poster && (course.poster.includes('.jpg') || course.poster.includes('.png') || course.poster.includes('.jpeg'))) {
-            return `<img src="${course.poster}" alt="${course.name}" onerror="this.innerHTML='<i class=\\'${design.icon}\\' style=\\'font-size: ${design.iconSize};\\'></i>'">`;
+    // Function to get course poster HTML
+    const getCoursePoster = (course) => {
+        // Always try to show image if poster path exists
+        if (course.poster) {
+            // Return simple image tag
+            return `<img src="${course.poster}" alt="${course.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">`;
         }
 
-        // Use beautiful gradient design
+        // Use gradient fallback if no image specified
+        const design = getFallbackDesign(course.id);
+        return getGradientFallback(design);
+    };
+
+    // Helper function to create gradient fallback HTML
+    function getGradientFallback(design) {
         return `
             <div style="
                 width: 100%;
@@ -133,12 +156,15 @@ function renderCourses(courses) {
                 <i class="${design.icon}" style="font-size: ${design.iconSize}; color: white; position: relative; z-index: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.2);"></i>
             </div>
         `;
-    };
+    }
 
-    courseGrid.innerHTML = courses.map(course => `
+    courseGrid.innerHTML = courses.map(course => {
+        const posterHtml = getCoursePoster(course);
+        console.log(`Course: ${course.name}, Poster: ${course.poster}`);
+        return `
         <div class="course-card">
             <div class="course-poster">
-                ${getCoursePoster(course)}
+                ${posterHtml}
             </div>
             <div class="course-info">
                 <h3>${course.name}</h3>
@@ -167,7 +193,10 @@ function renderCourses(courses) {
                 </a>
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
+    
+    console.log('Course HTML generated successfully, total length:', courseGrid.innerHTML.length);
 }
 
 function setupFilterButtons() {
