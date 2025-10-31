@@ -1,0 +1,16 @@
+# Old files (can be removed)
+script.js
+styles.css
+README 2.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
