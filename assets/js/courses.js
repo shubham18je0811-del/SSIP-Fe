@@ -176,16 +176,9 @@ function renderCourses(courses) {
                     <strong>Topics:</strong> ${course.topics.join(', ')}
                 </div>
                 <div class="course-meta">
-                    <div class="course-duration">
-                        <i class="fas fa-clock"></i>
-                        <span>${course.duration}</span>
+                    <div class="course-price" style="width: 100%; text-align: center; white-space: nowrap;">
+                        <span>${course.price || 'Limited Seats - Contact for Pricing'}</span>
                     </div>
-                    ${course.price ? `
-                        <div class="course-price">
-                            <i class="fas fa-rupee-sign"></i>
-                            <span>${course.price}</span>
-                        </div>
-                    ` : ''}
                 </div>
                 <a href="${course.telegramLink}" target="_blank" class="telegram-btn">
                     <i class="fab fa-telegram-plane"></i>
