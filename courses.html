@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Study Smart IAS PCS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <h1>Study Smart IAS PCS</h1>
+                </div>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html" class="active">Courses</a></li>
+                        <li><a href="gethelp.html">Get Help</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="courses-section" style="margin-top: 70px;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Courses</h2>
+                <p>Choose the course that fits your preparation needs</p>
+            </div>
+
+            <div class="search-filter-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search courses by name, faculty, or topics...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Courses</button>
+                    <button class="filter-btn" data-filter="faculty">By Faculty</button>
+                </div>
+            </div>
+
+            <div class="course-grid" id="courseGrid">
+                <!-- Courses will be loaded dynamically from JSON -->
+            </div>
+
+            <div id="noResults" style="display: none; text-align: center; padding: 2rem; color: var(--text-gray);">
+                <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                <p>No courses found matching your search criteria.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Smart IAS PCS</h3>
+                    <p>Shaping Tomorrow's Leaders</p>
+                    <p>Your trusted partner in UPSC and PCS preparation.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="gethelp.html">Get Help</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> info@studysmartias.com</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <a href="https://t.me/StudySmartIASPCS" class="telegram-link" target="_blank">
+                        <i class="fab fa-telegram-plane"></i> Join Telegram
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Study Smart IAS PCS. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/courses.js"></script>
+</body>
+</html>
+
