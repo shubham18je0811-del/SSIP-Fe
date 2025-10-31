@@ -9,12 +9,13 @@ async function loadCourses() {
         return;
     }
 
-    // Try multiple path variations
+    // Try multiple path variations with cache busting
+    const cacheBuster = '?v=' + new Date().getTime();
     const paths = [
-        'data/courses.json',
-        './data/courses.json',
-        '../data/courses.json',
-        '/data/courses.json'
+        'data/courses.json' + cacheBuster,
+        './data/courses.json' + cacheBuster,
+        '../data/courses.json' + cacheBuster,
+        '/data/courses.json' + cacheBuster
     ];
 
     let response = null;
@@ -177,7 +178,7 @@ function renderCourses(courses) {
                 </div>
                 <div class="course-meta">
                     <div class="course-price" style="width: 100%; text-align: center; white-space: nowrap;">
-                        <span>${course.price || 'Limited Seats - Contact for Pricing'}</span>
+                        <span>${course.price ? course.price : 'Limited Seats - Contact for Pricing'}</span>
                     </div>
                 </div>
                 <a href="${course.telegramLink}" target="_blank" class="telegram-btn">
