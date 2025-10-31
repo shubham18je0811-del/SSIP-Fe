@@ -174,7 +174,17 @@ function renderCourses(courses) {
                     <span>${course.faculty}</span>
                 </div>
                 <div class="course-topics">
-                    <strong>Topics:</strong> ${course.topics.join(', ')}
+                    <div class="topics-header" onclick="toggleTopics(this)">
+                        <strong>Course Details:</strong>
+                        <span class="topics-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="topics-content">
+                        <ul class="topics-list">
+                            ${course.topics.map(topic => `<li>${topic}</li>`).join('')}
+                        </ul>
+                    </div>
                 </div>
                 <div class="course-meta">
                     <div class="course-price" style="width: 100%; text-align: center; white-space: nowrap;">
@@ -242,6 +252,11 @@ function applySearchFilter() {
     });
 
     renderCourses(filtered);
+}
+
+// Toggle topics dropdown
+function toggleTopics(element) {
+    element.classList.toggle('active');
 }
 
 // Initialize when page loads
