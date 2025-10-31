@@ -296,13 +296,75 @@ section {
 
 .course-topics {
     margin: 1rem 0;
-    padding: 1rem;
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 20%, #fef3c7 100%);
+    padding: 0;
+    background: #e8ffff;
     border-radius: 8px;
+    border-left: 3px solid var(--secondary-blue);
+    overflow: hidden;
+}
+
+.topics-header {
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 0.9rem;
     color: var(--text-gray);
-    border-left: 3px solid var(--secondary-blue);
-    line-height: 1.6;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.topics-header:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.topics-header strong {
+    color: var(--primary-blue);
+}
+
+.topics-toggle {
+    transition: transform 0.3s ease;
+    color: var(--secondary-blue);
+}
+
+.topics-header.active .topics-toggle {
+    transform: rotate(180deg);
+}
+
+.topics-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 1rem;
+}
+
+.topics-header.active + .topics-content {
+    max-height: 500px;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.topics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.topics-list li {
+    padding: 0.25rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+.topics-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-blue);
+    font-weight: bold;
 }
 
 .course-meta {
