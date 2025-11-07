@@ -261,6 +261,10 @@ section {
     color: var(--text-gray);
 }
 
+#courses-section .section-header {
+    margin-bottom: 1.5rem;
+}
+
 /* Course Cards */
 .course-grid {
     display: grid;
