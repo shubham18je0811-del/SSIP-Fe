@@ -547,6 +547,38 @@ section {
     border-color: var(--primary-blue);
 }
 
+.faculty-filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.faculty-filter-btn {
+    padding: 8px 20px;
+    border: 2px solid var(--border-color);
+    background-color: var(--white);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    color: var(--text-dark);
+}
+
+.faculty-filter-btn:hover {
+    background-color: var(--light-blue);
+    border-color: var(--secondary-blue);
+    color: var(--primary-blue);
+}
+
+.faculty-filter-btn.active {
+    background-color: var(--secondary-blue);
+    color: var(--white);
+    border-color: var(--secondary-blue);
+}
+
 /* About Page */
 .about-content {
     display: grid;

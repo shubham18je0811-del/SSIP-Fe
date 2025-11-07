@@ -3,6 +3,7 @@
     "id": 1,
     "name": "Maha Granth",
     "faculty": "Expert Faculty Team",
+    "facultyCategory": "UPPCS",
     "topics": [
       "GS 1 - History, Geography, Society",
       "GS 2 - Polity, Governance, International Relations",
@@ -26,6 +27,7 @@
     "id": 2,
     "name": "Spark - Answer Writing Mastery",
     "faculty": "Expert Mentorship Team",
+    "facultyCategory": "UPPCS",
     "topics": [
       "Voice Evaluation (Exclusive)",
       "Daily Answer Writing with Model Answers",
@@ -45,6 +47,7 @@
     "id": 3,
     "name": "Uttar Pradesh Special (GS 5 & 6)",
     "faculty": "UP PCS Expert Faculty",
+    "facultyCategory": "UPPCS",
     "topics": [
       "Theme Based Syllabus Coverage",
       "GS 5 & 6 through Video Lectures",
