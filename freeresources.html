@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses - Study Smart IAS PCS</title>
+    <title>Free Resources - Study Smart IAS PCS</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,9 +20,9 @@
                 <nav id="nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="courses.html" class="active">Courses</a></li>
+                        <li><a href="courses.html">Courses</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="freeresources.html">Free Resources</a></li>
+                        <li><a href="freeresources.html" class="active">Free Resources</a></li>
                         <li><a href="gethelp.html">Get Help</a></li>
                     </ul>
                 </nav>
@@ -35,32 +35,28 @@
         </div>
     </header>
 
-    <section id="courses-section" style="margin-top: 70px;">
+    <section style="margin-top: 70px; padding: 60px 0;">
         <div class="container">
             <div class="section-header">
-                <h2>Our Courses</h2>
-                <p>Choose the course that fits your preparation needs</p>
+                <h2>Terms in News</h2>
+                <p>Get ready for your exam with latest and most probable terms in news</p>
             </div>
 
-            <div class="search-filter-section">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search courses by name, faculty, or topics...">
-                    <i class="fas fa-search"></i>
+            <div class="video-playlist-container">
+                <div class="video-scroll-wrapper">
+                    <div class="video-scroll-container" id="videoContainer">
+                        <!-- Videos will be loaded here -->
+                        <div class="loading-message">
+                            <i class="fas fa-spinner fa-spin"></i> Loading videos...
+                        </div>
+                    </div>
                 </div>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-faculty="all">All Courses</button>
-                    <button class="filter-btn" data-faculty="UPSC">UPSC</button>
-                    <button class="filter-btn" data-faculty="UPPCS">UPPCS</button>
-                </div>
-            </div>
-
-            <div class="course-grid" id="courseGrid">
-                <!-- Courses will be loaded dynamically from JSON -->
-            </div>
-
-            <div id="noResults" style="display: none; text-align: center; padding: 2rem; color: var(--text-gray);">
-                <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                <p>No courses found matching your search criteria.</p>
+                <button class="scroll-btn scroll-btn-left" id="scrollLeft" aria-label="Scroll left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn scroll-btn-right" id="scrollRight" aria-label="Scroll right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -110,7 +106,6 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/courses.js"></script>
+    <script src="assets/js/freeresources.js"></script>
 </body>
 </html>
-
