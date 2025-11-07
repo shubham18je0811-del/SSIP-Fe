@@ -1,6 +1,7 @@
 // Load courses from JSON file
 let allCourses = [];
 let filteredCourses = [];
+let selectedFacultyCategory = null;
 
 async function loadCourses() {
     const courseGrid = document.getElementById('courseGrid');
@@ -207,20 +208,26 @@ function setupFilterButtons() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
 
-    // Filter buttons (can be extended for faculty-specific filtering)
+    // Filter buttons (All Courses, UPSC, UPPCS, CSAT)
     filterButtons.forEach(btn => {
         btn.addEventListener('click', function() {
+            // Remove active class from all buttons
             filterButtons.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
             this.classList.add('active');
             
-            const filter = this.getAttribute('data-filter');
-            if (filter === 'all') {
+            const facultyCategory = this.getAttribute('data-faculty');
+            
+            if (facultyCategory === 'all') {
+                // Show all courses
+                selectedFacultyCategory = null;
                 filteredCourses = [...allCourses];
-            } else if (filter === 'faculty') {
-                // Get unique faculties
-                const faculties = [...new Set(allCourses.map(c => c.faculty))];
-                // For now, just show all courses. Can be enhanced with a dropdown
-                filteredCourses = [...allCourses];
+            } else {
+                // Filter by faculty category
+                selectedFacultyCategory = facultyCategory;
+                filteredCourses = allCourses.filter(course => 
+                    course.facultyCategory === facultyCategory
+                );
             }
             applySearchFilter();
         });
