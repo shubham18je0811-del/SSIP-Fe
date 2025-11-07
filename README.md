@@ -104,7 +104,7 @@ Each course in `data/courses.json` contains:
 ## 📞 Support
 
 For issues or questions, contact:
-- Email: info@studysmartias.com
+- Email: studysmartiaspcs@gmail.com
 - Telegram: [Join our community](https://t.me/StudySmartIASPCS)
 
 ---
